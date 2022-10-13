@@ -26,6 +26,8 @@ const state = {
 
     //搜索历史记录
     searchHistory: JSON.parse(localStorage.getItem('searchHistory')) || [],
+    //搜索关键词
+    searchKeyword: localStorage.getItem('searchKeyword') || "",
 
     //播放器内所存放的歌曲
     musicPlayer: JSON.parse(localStorage.getItem('musicPlayer')) || [],
@@ -45,6 +47,9 @@ const state = {
     musicPlayerCurrentDuration: localStorage.getItem('musicPlayerCurrentDuration') || 0,
     //音乐总时长
     musicPlayerTotalDuration: localStorage.getItem('musicPlayerTotalDuration') || 0,
+
+
+
 
 
     // singer: {},

@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Search",
   data() {
@@ -68,6 +70,7 @@ export default {
         let searchresult = true;
         this.searchRes = false;
         this.$root.bus.$emit("searchvalue", searchresult);
+        localStorage.removeItem("searchKeyword");
       }
     },
     valueName() {
@@ -92,6 +95,9 @@ export default {
         // }, 10);
       }, 20);
     },
+  },
+  computed: {
+    ...mapState(["searchKeyword"]),
   },
   beforeDestroy() {
     //组件销毁时解除事件绑定

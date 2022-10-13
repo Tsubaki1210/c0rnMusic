@@ -18,6 +18,9 @@ export default {
     getSearchHistory(context, newVal) {
         context.commit('SET_SEARCH_HISTORY', newVal)
     },
+    getSearchKeyword(context, newVal) {
+        context.commit('SET_SEARCH_KEYWORD', newVal)
+    },
     getMusicPlayer(context, newVal) {
         context.commit('SET_MUSIC_PLAYER', newVal)
     },

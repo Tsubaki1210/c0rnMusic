@@ -17,6 +17,9 @@ export default {
     searchHistory(state) {
         return state.searchHistory
     },
+    searchKeyword(state) {
+        return state.searchKeyword
+    },
     musicPlayer(state) {
         return state.musicPlayer
     },

@@ -86,3 +86,41 @@ export const baseInfoMixin = {
 
     },
 }
+
+// export const Search = {
+//     data() {
+//         return {
+//             keywords: "", //搜索关键词
+//             searchheight: "", // search的高度
+//             searchresulttabheight: null, // searchResultTab的高度
+//             miniplayerheight: "", //mini播放器的高度
+//         }
+//     },
+//     created() {
+//         //获取search的搜索关键字
+//         this.$root.bus.$on("realvalue", (data) => {
+//             this.keywords = data;
+//             console.log(this.keywords)
+//             // this.getCloudSearch();
+//         });
+//         //获取search的高度
+//         this.$root.bus.$on("acceptsearchheight", (data) => {
+//             this.searchheight = data;
+//         });
+//         //获取searchResultTab的高度
+//         this.$root.bus.$on("acceptsearchtabheight", (data) => {
+//             this.searchresulttabheight = data;
+//         });
+//         //获取miniPlayer的高度
+//         this.$root.bus.$on("acceptminiplayerheight", (data) => {
+//             this.miniplayerheight = data;
+//         });
+//     },
+//     // beforeDestroy() {
+//     //     //组件销毁时解除事件绑定
+//     //     this.$root.bus.$off("realvalue");
+//     //     this.$root.bus.$off("acceptsearchheight");
+//     //     this.$root.bus.$off("acceptsearchtabheight");
+//     //     this.$root.bus.$off("acceptminiplayerheight");
+//     // },
+// }

@@ -31,7 +31,7 @@ export default {
     return {
       showsearchdefault: "",
       realsearchdefault: "",
-      search: true,
+      search: true, //搜索页面与搜索结果页面切换，true为前者，false为后者
     };
   },
   created() {

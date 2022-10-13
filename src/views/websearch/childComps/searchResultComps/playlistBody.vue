@@ -30,49 +30,32 @@
 <script>
 import Scroll from "components/common/scroll/Scroll";
 
+import { mapState } from "vuex";
+
 import { getCloudSearch } from "network/search.js";
+
+// import { Search } from "common/js/mixin";
 
 export default {
   name: "playlistBody",
+  // mixins: [Search],
   components: {
     Scroll,
   },
   data() {
     return {
-      keywords: "", //搜索关键词
+      keywords: this.$store.state.searchKeyword, //搜索关键词
       playlist: {}, //搜索的歌单结果
       type: 1000, //搜索type类型
 
-      searchheight: "", // search的高度
-      searchresulttabheight: null, // searchResultTab的高度
-      miniplayerheight: "", //mini播放器的高度
+      // searchheight: "", // search的高度
+      // searchresulttabheight: null, // searchResultTab的高度
+      // miniplayerheight: "", //mini播放器的高度
     };
   },
   created() {
-    console.log("playlist");
-    //获取search的搜索关键字
-    this.$root.bus.$on("realvalue", (data) => {
-      console.log("11");
-      console.log(data);
-      // this.keywords = data;
-      // console.log(this.keywords);
-      // this.getCloudSearch();
-    });
-    //获取search的高度
-    this.$root.bus.$on("acceptsearchheight", (data) => {
-      this.searchheight = data;
-      console.log(this.searchheight);
-    });
-    //获取searchResultTab的高度
-    this.$root.bus.$on("acceptsearchtabheight", (data) => {
-      this.searchresulttabheight = data;
-      console.log(this.searchresulttabheight);
-    });
-    //获取miniPlayer的高度
-    this.$root.bus.$on("acceptminiplayerheight", (data) => {
-      this.miniplayerheight = data;
-      console.log(data);
-    });
+    console.log(this.keywords);
+    console.log(this.$store.state);
   },
   methods: {
     getCloudSearch() {
@@ -94,6 +77,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(["searchKeyword"]),
     contentHeight() {
       if (this.searchresulttabheight != null) {
         let bottomHeight =
@@ -112,6 +96,10 @@ export default {
         return Height;
       }
     },
+  },
+  beforeDestroy() {
+    //组件销毁时解除事件绑定
+    this.$root.bus.$off("searchvalue");
   },
 };
 </script>

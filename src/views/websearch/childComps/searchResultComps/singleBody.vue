@@ -42,13 +42,15 @@
 <script>
 import Scroll from "components/common/scroll/Scroll";
 
+import { mapState } from "vuex";
+
 import { getCloudSearch } from "network/search.js";
 
-// import { baseInfoMixin } from "common/js/mixin";
+// import { Search } from "common/js/mixin";
 
 export default {
   name: "singleBody",
-  // mixins: [baseInfoMixin],
+  // mixins: [Search],
   components: {
     Scroll,
   },
@@ -57,6 +59,7 @@ export default {
       keywords: "", //搜索关键词
       song: {}, //搜索的单曲结果
       type: 1, //搜索type类型
+      search: true, //用来判断是否存入搜索关键词及调用搜索接口
 
       searchheight: "", // search的高度
       searchresulttabheight: null, // searchResultTab的高度
@@ -64,29 +67,34 @@ export default {
     };
   },
   created() {
+    //由于点击其他标签页，此组件并未销毁并一直占据$root.bus.on的数据，所以其他标签页无法获取数据
     //获取search的搜索关键字
     this.$root.bus.$on("realvalue", (data) => {
       this.keywords = data;
+      this.$store.dispatch("getSearchKeyword", this.keywords);
       console.log(this.keywords);
-      this.getCloudSearch();
+      // this.getCloudSearch();
     });
     //获取search的高度
     this.$root.bus.$on("acceptsearchheight", (data) => {
       this.searchheight = data;
-      console.log(this.searchheight);
     });
     //获取searchResultTab的高度
     this.$root.bus.$on("acceptsearchtabheight", (data) => {
       this.searchresulttabheight = data;
-      console.log(this.searchresulttabheight);
     });
     //获取miniPlayer的高度
     this.$root.bus.$on("acceptminiplayerheight", (data) => {
       this.miniplayerheight = data;
-      console.log(data);
     });
   },
+  mounted() {},
   methods: {
+    go() {
+      if (this.search === false) {
+        console.log(this.$data);
+      }
+    },
     getCloudSearch() {
       getCloudSearch(this.keywords, this.type).then((res) => {
         if (res.code === 200) {
@@ -107,6 +115,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(["searchKeyword"]),
     contentHeight() {
       if (this.searchresulttabheight != null) {
         let bottomHeight =
@@ -126,14 +135,11 @@ export default {
       }
     },
   },
-  // beforeDestroy() {
-  //   console.log("single");
-  //   //组件销毁时解除事件绑定
-  //   this.$root.bus.$off("realvalue");
-  //   this.$root.bus.$off("acceptsearchheight");
-  //   this.$root.bus.$off("acceptsearchtabheight");
-  //   this.$root.bus.$off("acceptminiplayerheight");
-  // },
+  beforeDestroy() {
+    //组件销毁时解除事件绑定
+    this.$root.bus.$off("searchvalue");
+    this.$root.bus.$off("realvalue");
+  },
 };
 </script>
 

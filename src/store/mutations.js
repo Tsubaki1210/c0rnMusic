@@ -27,6 +27,10 @@ export default {
         state.searchHistory = newVal
         // state.searchHistory.push(newVal)
     },
+    SET_SEARCH_KEYWORD(state, newVal) {
+        localStorage.setItem('searchKeyword', newVal)
+        state.searchKeyword = newVal
+    },
     SET_MUSIC_PLAYER(state, newVal) {
         localStorage.setItem('musicPlayer', JSON.stringify(newVal))
         state.musicPlayer = newVal
