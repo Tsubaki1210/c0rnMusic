@@ -24,10 +24,17 @@ const state = {
     //用户喜欢的音乐ID
     userLikeSongsId: JSON.parse(localStorage.getItem('userLikeSongsId')) || {},
 
+    //搜索模块：
     //搜索历史记录
     searchHistory: JSON.parse(localStorage.getItem('searchHistory')) || [],
     //搜索关键词
     searchKeyword: localStorage.getItem('searchKeyword') || "",
+    //search的高度
+    searchHeight: localStorage.getItem('searchHeight') || Number,
+    //searchResultTab的高度
+    searchTabHeight: localStorage.getItem('searchTabHeight') || Number,
+    //miniPlayer的高度
+    miniPlayerHeight: localStorage.getItem('miniPlayerHeight') || Number,
 
     //播放器内所存放的歌曲
     musicPlayer: JSON.parse(localStorage.getItem('musicPlayer')) || [],

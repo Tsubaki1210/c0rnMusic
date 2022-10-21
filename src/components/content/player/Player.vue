@@ -595,9 +595,10 @@ export default {
         this.miniPlayerHeight =
           this.$refs.PlayerHeight.children[0].clientHeight;
         console.log(this.miniPlayerHeight);
-        setTimeout(() => {
-          this.$root.bus.$emit("acceptminiplayerheight", this.miniPlayerHeight);
-        }, 200);
+        this.$store.dispatch("getMiniPlayerHeight", this.miniPlayerHeight);
+        // setTimeout(() => {
+        //   this.$root.bus.$emit("acceptminiplayerheight", this.miniPlayerHeight);
+        // }, 200);
       });
     },
     //获取歌曲详情
@@ -903,7 +904,7 @@ export default {
     //组件销毁时解除事件绑定
     this.$root.bus.$off("emitReloadNum1");
     this.$root.bus.$off("emitReloadNum2");
-    this.$root.bus.$off("acceptminiplayerheight");
+    // this.$root.bus.$off("acceptminiplayerheight");
     // this.$root.bus.$off("emitMusicPlayerListCountNum");
   },
   destoryed() {

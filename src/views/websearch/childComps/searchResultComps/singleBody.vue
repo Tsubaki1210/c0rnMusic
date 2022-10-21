@@ -63,10 +63,11 @@ export default {
 
       searchheight: "", // search的高度
       searchresulttabheight: null, // searchResultTab的高度
-      miniplayerheight: "", //mini播放器的高度
+      miniplayerheight: this.$store.state.miniPlayerHeight, //mini播放器的高度
     };
   },
   created() {
+    console.log(this.miniplayerheight);
     //由于点击其他标签页，此组件并未销毁并一直占据$root.bus.on的数据，所以其他标签页无法获取数据
     //获取search的搜索关键字
     this.$root.bus.$on("realvalue", (data) => {
@@ -78,15 +79,18 @@ export default {
     //获取search的高度
     this.$root.bus.$on("acceptsearchheight", (data) => {
       this.searchheight = data;
+      this.$store.dispatch("getSearchHeight", this.searchheight);
     });
     //获取searchResultTab的高度
     this.$root.bus.$on("acceptsearchtabheight", (data) => {
       this.searchresulttabheight = data;
+      this.$store.dispatch("getSearchTabHeight", this.searchresulttabheight);
     });
-    //获取miniPlayer的高度
-    this.$root.bus.$on("acceptminiplayerheight", (data) => {
-      this.miniplayerheight = data;
-    });
+    //获取miniPlayer的高度(有BUG，已移至Player.vue)
+    // this.$root.bus.$on("acceptminiplayerheight", (data) => {
+    //   this.miniplayerheight = data;
+    //   this.$store.dispatch("getMiniPlayerHeight", this.miniplayerheight);
+    // });
   },
   mounted() {},
   methods: {
@@ -116,6 +120,9 @@ export default {
   },
   computed: {
     ...mapState(["searchKeyword"]),
+    ...mapState(["searchHeight"]),
+    ...mapState(["searchTabHeight"]),
+    ...mapState(["miniPlayerHeight"]),
     contentHeight() {
       if (this.searchresulttabheight != null) {
         let bottomHeight =

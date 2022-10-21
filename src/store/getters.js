@@ -20,6 +20,15 @@ export default {
     searchKeyword(state) {
         return state.searchKeyword
     },
+    searchHeight(state) {
+        return state.searchHeight
+    },
+    searchTabHeight(state) {
+        return state.searchTabHeight
+    },
+    miniPlayerHeight(state) {
+        return state.miniPlayerHeight
+    },
     musicPlayer(state) {
         return state.musicPlayer
     },

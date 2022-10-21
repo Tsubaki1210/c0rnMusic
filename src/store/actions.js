@@ -21,6 +21,15 @@ export default {
     getSearchKeyword(context, newVal) {
         context.commit('SET_SEARCH_KEYWORD', newVal)
     },
+    getSearchHeight(context, newVal) {
+        context.commit('SET_SEARCH_HEIGHT', newVal)
+    },
+    getSearchTabHeight(context, newVal) {
+        context.commit('SET_SEARCH_TAB_HEIGHT', newVal)
+    },
+    getMiniPlayerHeight(context, newVal) {
+        context.commit('SET_MINI_PLAYER_HEIGHT', newVal)
+    },
     getMusicPlayer(context, newVal) {
         context.commit('SET_MUSIC_PLAYER', newVal)
     },

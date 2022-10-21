@@ -71,6 +71,9 @@ export default {
         this.searchRes = false;
         this.$root.bus.$emit("searchvalue", searchresult);
         localStorage.removeItem("searchKeyword");
+        localStorage.removeItem("searchHeight");
+        localStorage.removeItem("searchTabHeight");
+        localStorage.removeItem("miniPlayerHeight");
       }
     },
     valueName() {
@@ -98,6 +101,9 @@ export default {
   },
   computed: {
     ...mapState(["searchKeyword"]),
+    ...mapState(["searchHeight"]),
+    ...mapState(["searchTabHeight"]),
+    ...mapState(["miniPlayerHeight"]),
   },
   beforeDestroy() {
     //组件销毁时解除事件绑定

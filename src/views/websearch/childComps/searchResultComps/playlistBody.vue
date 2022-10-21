@@ -48,14 +48,13 @@ export default {
       playlist: {}, //搜索的歌单结果
       type: 1000, //搜索type类型
 
-      // searchheight: "", // search的高度
-      // searchresulttabheight: null, // searchResultTab的高度
-      // miniplayerheight: "", //mini播放器的高度
+      searchheight: this.$store.state.searchHeight, // search的高度
+      searchresulttabheight: this.$store.state.searchTabHeight, // searchResultTab的高度
+      miniplayerheight: this.$store.state.miniPlayerHeight, //mini播放器的高度
     };
   },
   created() {
-    console.log(this.keywords);
-    console.log(this.$store.state);
+    // this.getCloudSearch();
   },
   methods: {
     getCloudSearch() {
@@ -78,6 +77,9 @@ export default {
   },
   computed: {
     ...mapState(["searchKeyword"]),
+    ...mapState(["searchHeight"]),
+    ...mapState(["searchTabHeight"]),
+    ...mapState(["miniPlayerHeight"]),
     contentHeight() {
       if (this.searchresulttabheight != null) {
         let bottomHeight =

@@ -31,6 +31,18 @@ export default {
         localStorage.setItem('searchKeyword', newVal)
         state.searchKeyword = newVal
     },
+    SET_SEARCH_HEIGHT(state, newVal) {
+        localStorage.setItem('searchHeight', newVal)
+        state.searchHeight = newVal
+    },
+    SET_SEARCH_TAB_HEIGHT(state, newVal) {
+        localStorage.setItem('searchTabHeight', newVal)
+        state.searchTabHeight = newVal
+    },
+    SET_MINI_PLAYER_HEIGHT(state, newVal) {
+        localStorage.setItem('miniPlayerHeight', newVal)
+        state.miniPlayerHeight = newVal
+    },
     SET_MUSIC_PLAYER(state, newVal) {
         localStorage.setItem('musicPlayer', JSON.stringify(newVal))
         state.musicPlayer = newVal
