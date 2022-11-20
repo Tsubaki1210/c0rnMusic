@@ -1,29 +1,29 @@
 <template>
-  <!--  1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词,
-  1009: 电台, 1014: 视频 -->
   <!-- bookCount是收藏 -->
-  <div id="playlistBody">
-    <div
-      class="playlistBody-song-list"
-      v-for="(item, index) in playlist"
-      :key="index"
-    >
-      <div class="playlistBody-song-list-left-img">
-        <img :src="item.coverImgUrl" alt="" />
+  <div id="playlistbody">
+    <scroll class="content" ref="scroll" :probe-type="3" :style="contentHeight">
+      <div
+        class="playlistbody-song-list"
+        v-for="(item, index) in playlist"
+        :key="index"
+      >
+        <div class="playlistbody-song-list-left-img">
+          <img :src="item.coverImgUrl" alt="" />
+        </div>
+        <div class="playlistbody-song-list-text">
+          <p class="playlistbody-list-title">{{ item.name }}</p>
+          <p class="playlistbody-list-text">
+            {{ item.trackCount }}首，By {{ item.creator.nickname }}，播放{{
+              item.playCount >= 100000000
+                ? (item.playCount / 100000000).toFixed(1) + "亿"
+                : item.playCount >= 10000 && item.playCount < 100000000
+                ? (item.playCount / 10000).toFixed(1) + "万"
+                : item.playCount
+            }}次
+          </p>
+        </div>
       </div>
-      <div class="playlistBody-song-list-text">
-        <p class="playlistBody-list-title">{{ item.name }}</p>
-        <p class="playlistBody-list-text">
-          {{ item.trackCount }}首，By {{ item.creator.nickname }}，播放{{
-            item.playCount >= 100000000
-              ? (item.playCount / 100000000).toFixed(1) + "亿"
-              : item.playCount >= 10000 && item.playCount < 100000000
-              ? (item.playCount / 10000).toFixed(1) + "万"
-              : item.playCount
-          }}次
-        </p>
-      </div>
-    </div>
+    </scroll>
   </div>
 </template>
 
@@ -107,38 +107,56 @@ export default {
 </script>
 
 <style scoped>
-.playlistBody-song-list {
+#playlistbody {
+  height: 100vh;
+}
+
+.playlistbody-song-list {
   height: 70px;
   margin: 5px 0 5px 15px;
   display: flex;
 }
 
-.playlistBody-song-list-left-img {
+.playlistbody-song-list-left-img {
   float: left;
   height: 70px;
 }
 
-.playlistBody-song-list-left-img img {
+.playlistbody-song-list-left-img img {
   width: 70px;
   height: 70px;
   border-radius: 10px;
 }
 
-.playlistBody-song-list-text {
+.playlistbody-song-list-text {
   float: left;
   text-align: left;
   margin: auto 10px;
   flex: 1;
 }
 
-.playlistBody-list-title {
+.playlistbody-list-title {
   margin: 6px 0;
   font-size: 16px;
 }
 
-.playlistBody-list-text {
+.playlistbody-list-text {
   margin: 6px 0;
   font-size: 14px;
   color: #7c7c7c;
+}
+
+.content {
+  overflow: auto;
+  position: absolute;
+  /* top: var(--cover-height); */
+  /* top: 44px; */
+  /* bottom: 159px; */
+  left: 0;
+  right: 0;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
 }
 </style>

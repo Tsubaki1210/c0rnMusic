@@ -24,15 +24,18 @@
 <script>
 // import syntheticalBody from "views/websearch/childComps/searchResultComps/syntheticalBody";
 import singleBody from "views/websearch/childComps/searchResultComps/singleBody";
-import playlistBody from "views/websearch/childComps/searchResultComps/playlistBody";
-import videoBody from "views/websearch/childComps/searchResultComps/videoBody";
-import singerBody from "views/websearch/childComps/searchResultComps/singerBody";
-import blogBody from "views/websearch/childComps/searchResultComps/blogBody";
-import lyricBody from "views/websearch/childComps/searchResultComps/lyricBody";
 import albumBody from "views/websearch/childComps/searchResultComps/albumBody";
-import soundBody from "views/websearch/childComps/searchResultComps/soundBody";
-import cloudBody from "views/websearch/childComps/searchResultComps/cloudBody";
+import singerBody from "views/websearch/childComps/searchResultComps/singerBody";
+import playlistBody from "views/websearch/childComps/searchResultComps/playlistBody";
 import userBody from "views/websearch/childComps/searchResultComps/userBody";
+import mvBody from "views/websearch/childComps/searchResultComps/mvBody";
+import lyricBody from "views/websearch/childComps/searchResultComps/lyricBody";
+import radioBody from "views/websearch/childComps/searchResultComps/radioBody";
+import videoBody from "views/websearch/childComps/searchResultComps/videoBody";
+import soundBody from "views/websearch/childComps/searchResultComps/soundBody";
+
+// import blogBody from "views/websearch/childComps/searchResultComps/blogBody";
+// import cloudBody from "views/websearch/childComps/searchResultComps/cloudBody";
 
 export default {
   name: "SearchResult",
@@ -40,15 +43,17 @@ export default {
   components: {
     // syntheticalBody,
     singleBody,
-    playlistBody,
-    videoBody,
-    singerBody,
-    blogBody,
-    lyricBody,
     albumBody,
-    soundBody,
-    cloudBody,
+    singerBody,
+    playlistBody,
     userBody,
+    mvBody,
+    lyricBody,
+    radioBody,
+    videoBody,
+    soundBody,
+    // blogBody,
+    // cloudBody,
   },
   data() {
     return {
@@ -58,15 +63,17 @@ export default {
       resultTab: [
         // { id: "syntheticalBody", name: "综合" },
         { id: "singleBody", name: "单曲" },
-        { id: "playlistBody", name: "歌单" },
-        { id: "videoBody", name: "视频" },
-        { id: "singerBody", name: "歌手" },
-        { id: "blogBody", name: "博客" },
-        { id: "lyricBody", name: "歌词" },
         { id: "albumBody", name: "专辑" },
-        { id: "soundBody", name: "声音" },
-        { id: "cloudBody", name: "云圈" },
+        { id: "singerBody", name: "歌手" },
+        { id: "playlistBody", name: "歌单" },
         { id: "userBody", name: "用户" },
+        { id: "mvBody", name: "MV" },
+        { id: "lyricBody", name: "歌词" },
+        { id: "radioBody", name: "电台" },
+        { id: "videoBody", name: "视频" },
+        { id: "soundBody", name: "声音" },
+        // { id: "blogBody", name: "博客" },
+        // { id: "cloudBody", name: "云圈" },
       ],
     };
   },

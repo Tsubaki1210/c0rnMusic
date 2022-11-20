@@ -1,5 +1,5 @@
 <template>
-  <div>歌手</div>
+  <div>MV</div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ import { mapState } from "vuex";
 import { getCloudSearch } from "network/search.js";
 
 export default {
-  name: "singerBody",
+  name: "mvBody",
   components: {
     Scroll,
   },
@@ -18,7 +18,7 @@ export default {
     return {
       keywords: this.$store.state.searchKeyword, //搜索关键词
       playlist: {}, //搜索的歌单结果
-      type: 100, //搜索type类型
+      type: 1004, //搜索type类型
 
       searchheight: this.$store.state.searchHeight, // search的高度
       searchresulttabheight: this.$store.state.searchTabHeight, // searchResultTab的高度
